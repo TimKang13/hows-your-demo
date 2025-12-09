@@ -1,7 +1,7 @@
-# README
+# How's Your Demo?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple and structured feedback platform for song demos, or any audio
+
 
 Things you may want to cover:
 
