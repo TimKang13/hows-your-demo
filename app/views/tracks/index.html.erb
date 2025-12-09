@@ -1,0 +1,23 @@
+<h1>index.html.erb<h1>
+<h1>num tracks: <%= @tracks.count %><h1>
+
+<% @tracks.each do |track| %>
+  <p><%= track.title %></p>
+<% end %>
+
+
+<% if @track&.errors&.any? %>
+  <div style="color: red;">
+    <ul>
+      <% @track.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: Track.new do |form| %>
+  <%= form.text_field :title, placeholder: "Track title" %>
+  <%= form.file_field :audio_file, accept: "audio/*" %>
+  <%= form.submit "Upload Track" %>
+<% end %>
