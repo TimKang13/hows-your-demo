@@ -48,7 +48,7 @@ class Track < ApplicationRecord
     end
 
     private
-    
+
     def use_file_name_as_default_title
         if self.title.blank?
             self.title = audio_file.filename.to_s.split(".").first

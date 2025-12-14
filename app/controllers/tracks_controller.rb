@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
-    before_action :set_tracks, only: [:index, :create]
-    before_action :set_track, only: [:show, :edit, :update, :destroy]  
+    before_action :set_tracks, only: [ :index, :create ]
+    before_action :set_track, only: [ :show, :edit, :update, :destroy ]
 
     def index
         @tracks = Track.all
