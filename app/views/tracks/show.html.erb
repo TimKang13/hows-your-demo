@@ -1,1 +1,12 @@
-<h1>show.html.erb<h1>
+
+<h1><%= @track.title %></h1>
+
+<div data-controller="player"
+     data-player-url-value="<%= url_for(@track.audio_file) %>">
+  <div data-player-target="waveform"></div>
+
+  <div class="controls">
+    <button data-action="click->player#playPause">Play / Pause</button>
+  </div>
+</div>
+

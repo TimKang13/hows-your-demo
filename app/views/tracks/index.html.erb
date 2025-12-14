@@ -2,7 +2,7 @@
 <h1>num tracks: <%= @tracks.count %><h1>
 
 <% @tracks.each do |track| %>
-  <p><%= track.title %></p>
+  <p><%= link_to track.title, track_path(track) %></p>
 <% end %>
 
 
