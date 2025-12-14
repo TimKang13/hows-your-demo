@@ -1,4 +1,4 @@
-class TracksController < ActionController::Base
+class TracksController < ApplicationController
     before_action :set_tracks, only: [:index, :create]
     before_action :set_track, only: [:show, :edit, :update, :destroy]  
 
