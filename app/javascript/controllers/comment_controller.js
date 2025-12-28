@@ -3,9 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="comment"
 export default class extends Controller {
 
+  static outlets = ["player"]
   static targets = [
     "commentBox",
     "commentInput",
+    "timestampInput"
   ]
 
   async connect() {
@@ -36,6 +38,12 @@ export default class extends Controller {
       window.removeEventListener("keydown", this._onKeyDown)
       this._onKeyDown = null
     }
+  }
+
+  stamp(){
+    const t = this.playerOutlet.getCurrentTimestamp()
+    console.log(t)
+    this.timestampInputTarget.value = Number.isFinite(t) ? t.toFixed(3) : ""
   }
 
   showCommentBox() {

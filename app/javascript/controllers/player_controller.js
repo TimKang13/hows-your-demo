@@ -44,6 +44,10 @@ export default class extends Controller {
     }
   }
 
+  getCurrentTimestamp(){
+    return this.waveSurfer?.getCurrentTime?.() ?? 0
+  }
+
   playPause() {
     this.waveSurfer.playPause()
   } 

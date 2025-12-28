@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_014900) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_28_081311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -45,6 +45,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_014900) do
   create_table "comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
+    t.decimal "timestamp", precision: 10, scale: 3, default: "0.0", null: false
     t.bigint "track_id", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false

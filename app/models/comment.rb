@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text             not null
+#  timestamp  :decimal(10, 3)   default(0.0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  track_id   :bigint           not null
@@ -24,4 +25,5 @@ class Comment < ApplicationRecord
     belongs_to :track
 
     validates :content, presence: true
+    validates :timestamp, presence: true
 end

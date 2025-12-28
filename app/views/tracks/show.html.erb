@@ -1,6 +1,7 @@
 <h1><%= @track.title %></h1>
 
-<div data-controller="player"
+<div id="player"
+    data-controller="player"
      data-player-url-value="<%= url_for(@track.audio_file) %>">
   <div data-player-target="waveform"></div>
 
@@ -9,15 +10,17 @@
   </div>
 </div>
 
-<div data-controller="comment">
+<div data-controller="comment"
+  data-comment-player-outlet="#player">
   <button type="button" data-action="click->comment#showCommentBox">Add comment</button>
 
   <div data-comment-target="commentBox" hidden>
-    <%= form_with model: [@track, Comment.new] do |f| %>
+    <%= form_with model: [@track, Comment.new],
+                  data: {action: "submit->comment#stamp"} do |f| %>
       <div>
         <%= f.text_field :content %>
       </div>
-      <%= f.checkbox :biography %>
+      <%= f.hidden_field :timestamp, value: "", data: { comment_target: "timestampInput" } %>
       <%= f.submit %>
     <% end %>
   </div>
