@@ -1,4 +1,3 @@
-
 <h1><%= @track.title %></h1>
 
 <div data-controller="player"
@@ -10,3 +9,16 @@
   </div>
 </div>
 
+<div data-controller="comment">
+  <button type="button" data-action="click->comment#showCommentBox">Add comment</button>
+
+  <div data-comment-target="commentBox" hidden>
+    <%= form_with model: [@track, Comment.new] do |f| %>
+      <div>
+        <%= f.text_field :content %>
+      </div>
+      <%= f.checkbox :biography %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
