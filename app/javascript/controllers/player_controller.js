@@ -4,18 +4,33 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     url: String,
+    comments: Array
   }
   static targets = ["waveform"]
 
   async connect() {
     const { default: WaveSurfer } = await import("wavesurfer.js")
+    const { default: Regions } = await import('wavesurfer.js/dist/plugins/regions.esm.js')
     
+    this.regions = Regions.create()
+
     this.waveSurfer = WaveSurfer.create({
       container: this.waveformTarget,
       waveColor: "#4F4A85",
       progressColor: "#F76E11",
       url: this.urlValue,
+      plugins: [this.regions]
     })
+
+    this.waveSurfer.on('decode', () => {
+      this.commentsValue.forEach((comment, _index) => {
+        this.regions.addRegion({
+          start: comment.timestamp,
+          color: 'grey'
+        })
+      })
+    })
+
 
     this._onKeyDown = (e) => {
       if (e.code == "Space") {

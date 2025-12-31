@@ -25,6 +25,8 @@ class TracksController < ApplicationController
 
     def show
         @track = Track.find(params[:id])
+        @comments = @track.comments.order(:timestamp)
+        puts "comments: #{@comments}"
     end
 
     def edit

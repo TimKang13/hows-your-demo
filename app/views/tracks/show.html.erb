@@ -2,13 +2,17 @@
 
 <div id="player"
     data-controller="player"
-     data-player-url-value="<%= url_for(@track.audio_file) %>">
+     data-player-url-value="<%= url_for(@track.audio_file) %>"
+     data-player-comments-value="<%= @comments.to_json %>">
   <div data-player-target="waveform"></div>
 
   <div class="controls">
     <button data-action="click->player#playPause">Play / Pause</button>
   </div>
 </div>
+
+
+<%# Selected comment section %>
 
 <div data-controller="comment"
   data-comment-player-outlet="#player">
@@ -25,3 +29,6 @@
     <% end %>
   </div>
 </div>
+
+
+
