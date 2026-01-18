@@ -20,9 +20,9 @@
 
   <div data-comment-target="commentBox" hidden>
     <%= form_with model: [@track, Comment.new],
-                  data: {action: "submit->comment#stamp"} do |f| %>
+                  data: { turbo: false, action: "submit->comment#submit" } do |f| %>
       <div>
-        <%= f.text_field :content %>
+        <%= f.text_field :content, data: { comment_target: "commentInput" } %>
       </div>
       <%= f.hidden_field :timestamp, value: "", data: { comment_target: "timestampInput" } %>
       <%= f.submit %>
